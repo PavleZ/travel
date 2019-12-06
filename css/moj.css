@@ -1,0 +1,210 @@
+*{
+    box-sizing: border-box !important;
+}
+
+.destinacija figure{
+   position: relative;
+
+
+}
+
+.pozadina{
+    background-image: url('../images/proba2.jpg') !important;
+    
+    background-size: cover;
+    
+}
+#gtco-features, #gtco-features-2, #gtco-products, #gtco-services, #gtco-subscribe, #gtco-footer, .gtco-section{
+    padding:4em 0em !important;
+}
+.destinacija figure::after{
+    font-family: 'Font Awesome 5 Free';
+    content: '\f002';
+    display: block;
+    position: absolute;
+   font-weight: 900;
+  top: 100%;
+  left:50%;
+  z-index:500;
+  color:#fff;
+  display: none;
+}
+.destinacija figure:hover::after{
+    top: 50%;
+    display:block;
+    transition: 1s ease-in;
+}
+.beliTekst{
+    color:#fff !important;
+}
+#bukirajPutovanje{
+    height: 100%;
+}
+.bytMargina{
+    margin-bottom: 3em;
+}
+.krem{
+    background: #09C6AB;
+}
+.centrirajPoHorizontali{
+    margin:0px auto;
+}
+.bukForma,.kontF{
+    color:#000;
+    border:2px solid #000;
+}
+.bukFormaLabela{
+    color:#000;
+}
+.mt{
+    margin-top:0.3em;
+}
+.marginT{
+    margin-top:3em;
+
+}
+.bukPozadina{
+    background:#fff !important;
+}
+#meni ul{display: block;}
+.kontF:focus{
+        background: #fff!important;
+        color:#0098EF!important;
+}
+#btnKontakt,.labK{
+    color:#fff !important;
+}
+#btnKontakt:focus{
+    color:#0098EF !important;
+}
+.crniTekst{
+    color:#000;
+}
+textarea {
+    resize: none;
+  }
+  #kInformacije ul{
+      list-style: none;
+  }
+  #kInformacije li{
+   
+    padding:0.6em;
+    text-align: center;
+}
+#kInformacije li a{
+    color:#fff;
+}
+#kInformacije li a .faIkonica{
+    font-size: 1.6em;
+    margin-right:1.1em ;
+}
+#gtco-footer{
+    padding:0 !important;
+    margin: 0 !important;
+}
+.spustanjeMenija{
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:#09C6AB;
+    width:'100%';
+    border-bottom:1px solid #777;
+    transition:1s;
+}
+.mp{
+    padding:0.3em 0em !important;
+}.marginaG{
+    margin-top:5em ;
+}
+.strelica{
+    position: fixed;
+    bottom:5%;
+    right: 2%;
+    z-index: 999;
+    font-size:3em;
+    
+    border-radius:50% ;
+    color: #777;
+}
+.vidiSe{
+    display:block!important;
+}
+.neVidiSe{
+    display:none!important;
+}
+.hamburger{
+    color:#fff;
+    font-size:1.8em;
+    display:none !important;
+}
+.hamb{
+    padding: 0px !important;
+    
+}
+.bmg{
+    margin-top:0;
+    margin-bottom:0;
+
+}
+#captcha{
+    position: relative;
+
+}
+
+#captcha::after{
+    content: 'dsffsdf';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    
+    width:20%;
+    height: inherit;
+    border-left:20px solid #0098EF;
+  
+}
+@media screen and (min-width: 800px){
+    .gtco-nav .menu-1, .gtco-nav .menu-2 {
+        display: inline;
+    }
+}
+@media screen and (max-width: 768px){
+.gtco-cover.gtco-cover-sm {
+     height: auto; 
+}
+}
+@media screen and (max-width: 991px){
+    .gtco-cover.gtco-cover-sm {
+         height: auto; 
+    }
+}
+@media screen and (max-width: 768px){
+    .gtco-nav .menu-1, .gtco-nav .menu-2 {
+        display: block;
+    }
+   .marginaG{
+       margin-top:8em!important;
+   }
+}
+@media screen and (min-width: 551px){
+   
+    #meni ul{
+        display:block!important;
+    }
+   
+ 
+ }
+@media screen and (max-width: 550px){
+   #meni ul li{
+       display: block;
+       margin-top: 5px;
+   }
+   #meni ul{
+       display:none;
+   }
+    .hamburger{
+        display:inline!important;
+    }
+
+}
+  
