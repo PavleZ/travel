@@ -10,8 +10,9 @@
 
 .pozadina{
     background-image: url('../images/proba2.jpg') !important;
-    
-    background-size: cover;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
     
 }
 #gtco-features, #gtco-features-2, #gtco-products, #gtco-services, #gtco-subscribe, #gtco-footer, .gtco-section{
