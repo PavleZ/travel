@@ -17,23 +17,9 @@
 #gtco-features, #gtco-features-2, #gtco-products, #gtco-services, #gtco-subscribe, #gtco-footer, .gtco-section{
     padding:4em 0em !important;
 }
-.destinacija figure::after{
-    font-family: 'Font Awesome 5 Free';
-    content: '\f002';
-    display: block;
-    position: absolute;
-   font-weight: 900;
-  top: 100%;
-  left:50%;
-  z-index:500;
-  color:#fff;
-  display: none;
-}
-.destinacija figure:hover::after{
-    top: 50%;
-    display:block;
-    transition: 1s ease-in;
-}
+
+  
+
 .beliTekst{
     color:#fff !important;
 }
@@ -46,6 +32,22 @@
 .krem{
     background: #09C6AB;
 }
+.relativan{
+    position:relative;
+}
+.autorSlika{
+    width:30%;
+    border-radius:50%;
+    text-align: center;
+}
+.manjadm{
+    margin-bottom:0px;
+}
+.vecagm{
+    margin-top:1em;
+
+}
+
 .centrirajPoHorizontali{
     margin:0px auto;
 }
@@ -185,12 +187,17 @@ textarea {
    .marginaG{
        margin-top:8em!important;
    }
+   .autorSlika{
+    width:50%;
+   
+}
 }
 @media screen and (min-width: 551px){
    
     #meni ul{
         display:block!important;
     }
+    
    
  
  }
@@ -205,6 +212,7 @@ textarea {
     .hamburger{
         display:inline!important;
     }
+    
 
 }
   

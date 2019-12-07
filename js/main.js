@@ -1,3 +1,92 @@
+var selektovanaDest="";
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if($(this).scrollTop()>50){
+            $("#zaglavlje").addClass('spustanjeMenija');
+            $("#meni ul li a").addClass('beliTekst');
+        }
+        else{
+            $("#zaglavlje").removeClass('spustanjeMenija');
+            $("#meni ul li a").removeClass('beliTekst');
+        }
+        if($(this).scrollTop() > 700){
+            $(".strelica").removeClass("neVidiSe");
+            $(".strelica").addClass("vidiSe");
+        }
+        else{
+           
+           
+            $(".strelica").removeClass("vidiSe");
+            $(".strelica").addClass("neVidiSe");
+    
+    
+        }
+    });
+    
+    $(".hamb").on('click',function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        $('#meni ul').slideToggle();
+    });
+    $(document).on("click","#home",function(e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: $("#page").offset().top
+        }, 2000);
+    });
+    $(document).on("click","#destination",function(e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: $("#destinacije").offset().top-250
+        }, 2000);
+    });
+    $(document).on("click","#book",function(e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: $("#bukirajPutovanje").offset().top-200
+        }, 2000);
+    });
+    $(document).on("click","#contact",function(e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: $("#kontaktForma").offset().top-200
+        }, 2000);
+    });
+    $(document).on("click","#idiGore",function(e) {
+        e.preventDefault();
+        $('html,body').animate({
+            scrollTop: $("#page").offset().top
+        }, 2000);
+    });
+    
+    $(document).on("click",".bukItem",function(e) {
+        e.preventDefault();
+        selektovanaDest= $(this).attr("name");
+        $('html,body').animate({
+            scrollTop: $("#bukirajPutovanje").offset().top-200
+        }, 2000);
+        podesiDestinaciju();
+        
+    });
+    $(document).on("scroll",".bukItem",function(e) {
+        e.preventDefault();
+
+        $('html,body').animate({
+            scrollTop: $("#bukirajPutovanje").offset().top-200
+        }, 2000);
+        
+        
+    });
+    
+ 
+    
+});
+
+
+
+
+
+
 window.onload=function(){
     napraviMeni();
     najDestinacije();
@@ -10,15 +99,11 @@ window.onload=function(){
    document.getElementById("bookBtn").addEventListener("click",proveraBukForme);
    document.getElementById("btnKontakt").addEventListener("click",proveraKontaktForme)
    generisiCaptachu();
+  
 }
-$(document).ready(function(){
-    $(window).scroll();
-    $(".bukItem").click(function(e){
-        e.preventDefault();
-        console.log("asf;ljalf");
-    });
 
-});
+
+  
 
 function napraviMeni(){
     var nizStavkiMenija=['Home','Destination','Book','Contact'];
@@ -30,7 +115,7 @@ function napraviMeni(){
     document.querySelector("#navigacija").appendChild(nav);
     var ispis="<ul>";
     for(let i=0;i<nizStavkiMenija.length;i++){
-        ispis+=`<li><a href="#">${nizStavkiMenija[i]}</a></li>`
+        ispis+=`<li><a href="#" id="${nizStavkiMenija[i].toLowerCase()}">${nizStavkiMenija[i]}</a></li>`
     }
     ispis+='</ul>';
     nav.innerHTML=ispis;
@@ -44,14 +129,15 @@ function najDestinacije(){
         for(let i=0;i<nizSlika.length;i++){
             ispis+=`
             <div class="col-lg-4 col-md-4 col-sm-6 destinacija">
-						<figure>
-							
-							<img src="images/${nizSlika[i]}.jpg" alt="Destination ${i}" class="img-responsive">
-						</figure>
+						<figure class="rel">
+							<div class="">
+							    <img src="images/${nizSlika[i]}.jpg" alt="Destination ${i}" class="img-responsive overlej">
+                            </div>
+                            </figure>
 						<div class="fh5co-text">
 							<h2>${nizSlika[i].charAt(0).toUpperCase()}${nizSlika[i].substr(1)}</h2>
 							<p>${nizTekstaIspodSlike[i]}</p>
-							<p><a class="btn btn-primary bukItem" href="#">Book</a></p>
+							<p><a href="#" class="btn btn-primary bukItem" name="${nizSlika[i]}">Book</a></p>
 						</div>
 					
 				</div>`;
@@ -204,7 +290,7 @@ function napraviFormuBukirajPutovanje(){
             <div class="form-group ">
             <div class="col-md-2 col-sm-5">
                 <label for="generCaptcha" class="bukFormaLabela">Captcha</label>
-                <input type="text" id="generisanaCaptcha" class="form-control bukForma unutar"/>
+                <input type="text" id="generisanaCaptcha" class="form-control bukForma unutar" readonly/>
               
 
                 
@@ -317,34 +403,7 @@ function napraviPZaKontaktInformacije(){
     parent.innerHTML+=ispis;
 }
 
-$(window).scroll(function(){
-    if($(this).scrollTop()>50){
-        $("#zaglavlje").addClass('spustanjeMenija');
-        $("#meni ul li a").addClass('beliTekst');
-    }
-    else{
-        $("#zaglavlje").removeClass('spustanjeMenija');
-        $("#meni ul li a").removeClass('beliTekst');
-    }
-    if($(this).scrollTop() > 700){
-        $(".strelica").removeClass("neVidiSe");
-        $(".strelica").addClass("vidiSe");
-    }
-    else{
-       
-       
-        $(".strelica").removeClass("vidiSe");
-        $(".strelica").addClass("neVidiSe");
 
-
-    }
-});
-
-$(".hamb").on('click',function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    $('#meni ul').slideToggle();
-});
 
 //Regularni Izrazi
 
@@ -508,6 +567,7 @@ function proveraBukForme(){
 
     var fname,lname,email,destination,dateA,dateD,captcha;
     var fnameG,lnameG,emailG,destinationG,dateAG,dateDG,captchaG;
+    var dobro=true;
 
     fname=document.querySelector("#fName").value;
     lname=document.querySelector("#lName").value;
@@ -529,15 +589,19 @@ function proveraBukForme(){
     if(fname=="")
     {
         fnameG.innerHTML="Required field";
+        dobro=false;
     }
     else{
-        fnameG.innerHTML="";
         if(reFnameLname.test(fname)){
             fnameG.innerHTML="";
+            dobro=true;
+
 
         }
         else{
             fnameG.innerHTML="Invalid format";
+            dobro=false;
+
 
         }
 
@@ -546,16 +610,23 @@ function proveraBukForme(){
 
    if(lname==""){
     lnameG.innerHTML="Required field";
+    dobro=false;
+
 
    }
    else{
-    lnameG.innerHTML="";
+    
     if(reFnameLname.test(lname)){
         lnameG.innerHTML="";
+        dobro=true;
+
 
     }
     else{
         lnameG.innerHTML="Invalid format";
+        dobro=false;
+
+        
 
     }
    }
@@ -563,71 +634,114 @@ function proveraBukForme(){
    if(email=="")
    {
        emailG.innerHTML="Required field";
+       dobro=false;
+
    }
    else{
-    emailG.innerHTML="";
     if(reEmail.test(email)){
         emailG.innerHTML="";
+        dobro=true;
+
 
     }
     else{
         emailG.innerHTML="Invalid format";
+        dobro=false;
+
 
     }
     
    }
    if(destination=="Choose destination"){
        destinationG.innerHTML="Required field";
+       dobro=false;
+
    }
    else{
     destinationG.innerHTML="";
+    dobro=true;
+
        
    }
    if(dateA==""){
        dateAG.innerHTML="Required field";
+       dobro=false;
+
    }
    else{
-    dateAG.innerHTML="";
+    
 
        if(dateA>dateD)
        {
            dateAG.innerHTML=" Arrival date cant be > than date of departure!";
+           dobro=false;
+
        }
        else{
         dateAG.innerHTML="";
+         dobro=true;
+
+
        }
    }
    if(dateD==""){
     dateDG.innerHTML="Required field";
+    dobro=false;
+
 }
 else{
-    dateDG.innerHTML="";
 
     if(dateD<dateA)
     {
         dateDG.innerHTML=" Departure date cant be < than date of arrival!";
+        dobro=false;
+
     }
     else{
         dateDG.innerHTML="";
+        dobro=true;
+
+
     }
 }
 
 if(captcha==""){
     captchaG.innerHTML="Verification is required";
+    dobro=false;
+
 }
 else{
-    if(captcha==kapca)
+    if(captcha==kapca){
     captchaG.innerHTML="";
+    dobro=true;
+    }
+
     else{
         captchaG.innerHTML="Type correct captcha";
+        dobro=false;
+
     }
+   
+    if(dobro)
+    document.querySelector("#uspesno h3").textContent="You have successfully booked your trip!"
+    else
+    document.querySelector("#uspesno h3").textContent="";
 
 }
 
-    
+}
+function podesiDestinaciju(){
+    var opcije=document.getElementById("destDDL");
+   
 
-
-
+   
+for(let i=0;i<opcije.length;i++)
+{
+    if(opcije.options[i].value.toLowerCase()==selektovanaDest){
+        opcije.options[i].selected=true;
+    }
+}
+  
 }
 var kapca;
 function generisiCaptachu(){
@@ -640,11 +754,11 @@ function generisiCaptachu(){
    }
    var rez="";
    for(let i=0;i<2;i++){
-    var slucBrojMslova=Math.ceil(Math.random()*26);
-    var slucBrojVslova=Math.ceil(Math.random()*26);
+    var slucBrojMslova=Math.floor(Math.random()*26+1);
+    var slucBrojVslova=Math.floor(Math.random()*26+1);
     var slucBroj=Math.ceil(Math.random()*10);
 
-        rez+=nizVelikihSlova[slucBrojVslova]+nizMalihSlova[slucBrojMslova]+slucBroj;
+        rez+=nizVelikihSlova[slucBrojVslova-1]+nizMalihSlova[slucBrojMslova-1]+slucBroj;
    }
    document.getElementById("generisanaCaptcha").value=rez;
    kapca=rez;
@@ -694,6 +808,5 @@ function proveraKontaktForme(){
 
 
 }
-
 
 
