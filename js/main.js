@@ -1,5 +1,10 @@
 var selektovanaDest="";
 $(document).ready(function(){
+    $(window).on("load", function () {
+        $(".strelica").addClass("neVidiSe");
+   
+    });
+    
     $(window).scroll(function(){
         if($(this).scrollTop()>50){
             $("#zaglavlje").addClass('spustanjeMenija');
@@ -99,7 +104,7 @@ window.onload=function(){
    document.getElementById("bookBtn").addEventListener("click",proveraBukForme);
    document.getElementById("btnKontakt").addEventListener("click",proveraKontaktForme)
    generisiCaptachu();
-  
+    
 }
 
 
